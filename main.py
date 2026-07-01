@@ -1,5 +1,6 @@
 import streamlit as st
 from summarization import resumir_texto
+from generation import gerar_texto
 
 def main():
     st.header("Chatbot Simples", divider = True, text_alignment = "center")
@@ -12,11 +13,14 @@ def main():
         prompt_usuario = st.chat_input("Digite seu prompt aqui: ")
         
         if prompt_usuario:
+          st.write(f"Prompt do usuário: {prompt_usuario}")
+
           if opcao_selecionada == opcoes[0]:
-              pass
+              texto = gerar_texto(prompt_usuario)
+              st.write(texto)
           elif opcao_selecionada == opcoes[1] and prompt_usuario:
-              resumir = resumir_texto(prompt_usuario)
-              st.write(resumir)
+              resumo = resumir_texto(prompt_usuario)
+              st.write(resumo)
           elif opcao_selecionada == opcoes[2] and prompt_usuario:
               pass
         
